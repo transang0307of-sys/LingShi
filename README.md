@@ -31,7 +31,7 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 4. Chạy bot:
 ```
-python bot.py
+python main.py
 ```
 
 ## Requirements
