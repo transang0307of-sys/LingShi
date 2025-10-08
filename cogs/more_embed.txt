@@ -1,0 +1,59 @@
+#bản nâng cao
+
+# Tạo embed với nhiều fields
+embed = discord.Embed(
+    title="🌸 Trả lời từ Sư Tỷ",
+    description=reply_text[:4096],
+    color=color_map.get(state['personality'], 0x00ff00)
+)
+
+# Thêm thumbnail (avatar bot)
+embed.set_thumbnail(url=self.bot.user.avatar.url if self.bot.user.avatar else None)
+
+# Thêm author (hiển thị tên bot)
+embed.set_author(
+    name=f"Đại Sư Tỷ - {sect_info['name']}",
+    icon_url=self.bot.user.avatar.url if self.bot.user.avatar else None
+)
+
+# Thêm fields cho thông tin bổ sung
+embed.add_field(
+    name="🎭 Tính cách",
+    value=state['personality'].title(),
+    inline=True
+)
+
+embed.add_field(
+    name="💭 Tâm trạng",
+    value=state['mood'].title(),
+    inline=True
+)
+
+embed.add_field(
+    name="⛰️ Tông môn",
+    value=sect_info['name'],
+    inline=True
+)
+
+# Thêm timestamp
+import datetime
+embed.timestamp = datetime.datetime.now()
+
+# Footer
+embed.set_footer(
+    text=f"Phản hồi cho {message.author.display_name}",
+    icon_url=message.author.avatar.url if message.author.avatar else None
+)
+
+await message.reply(embed=embed)
+
+#hàng cơ bản
+embed = discord.Embed(
+    title="Trả lời",
+    description=reply_text,
+    color=0x5865F2  # Discord blurple color
+)
+
+embed.set_footer(text=f"{sect_info['name']}")
+
+await message.reply(embed=embed)
